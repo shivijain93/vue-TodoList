@@ -8,22 +8,24 @@
     
 </head>
 <body>
-    <main id= "app">
+    <div id= "app">
        
         <h2 style="text-align: center;">{{title}}</h2>
         <form @submit.prevent="addtodo">
-            <label  for="TodoList">Add a TodoList</label>
+            <label  for="TodoList">Add a Task</label>
             <input v-model="TodoList" type="text" name="Add a TodoList" id="TodoList" >
             <button type="submit" name="button">Add</button>
         </form>
         <ul>
-            <li v-for="todo in todos"> {{todo.title}}
+            <li v-for="todo in todos">
+             <input type="checkbox" v-model="todo.done">
+             <span :class="{ check: todo.done}">{{todo.title}}</span> 
                 <button @click="deleteTodo(todo)" type="button" name="button">Delete</button>
             </li>
 
         </ul>
           
-    </main>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
